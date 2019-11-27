@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import sys
 
 def get_product():
     product = input("Please enter a Product : \n")
@@ -27,7 +28,11 @@ def get_utility(max_quantity, product):
     utility = {}
     while i <= max_quantity:
         result = input("For %d %s what added happiness do you get ?\n" % (i,product))
-        utility[i] = int(result)
+        try:
+            utility[i] = int(result)
+        except ValueError:
+            print("You must enter a correct number")
+            sys.exit(1)
         i = i + 1
     print(utility)
     quantity = list(utility.keys())
